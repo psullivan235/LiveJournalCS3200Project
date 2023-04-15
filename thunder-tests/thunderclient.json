@@ -48,9 +48,9 @@
     "name": "get_ads_1",
     "url": "{{IP}}:{{PORT}}/s/advertisements",
     "method": "GET",
-    "sortNum": 10000,
+    "sortNum": 40000,
     "created": "2023-04-15T00:49:41.666Z",
-    "modified": "2023-04-15T01:06:24.845Z",
+    "modified": "2023-04-15T17:25:19.480Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -131,6 +131,618 @@
         "custom": "json[1].Views",
         "action": "equal",
         "value": "97524"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[50].Name",
+        "action": "equal",
+        "value": "Oozz"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[51].Name",
+        "action": "equal",
+        "value": "Kazu Ad"
+      }
+    ]
+  },
+  {
+    "_id": "132598dc-f581-4269-8148-4a9132391ccf",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "create_ad_1",
+    "url": "{{IP}}:{{PORT}}/s/advertisements",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-04-15T16:54:52.008Z",
+    "modified": "2023-04-15T17:00:51.139Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Name\": \"Oozz\",\n  \"Description\": \"Oozz Just Do It\",\n  \"Content\": \"Just Do It!\",\n  \"CompanyID\": 2\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "0609e2fb-4a9e-4b7e-83a5-20d0ab47c085",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "create_ad_2",
+    "url": "{{IP}}:{{PORT}}/s/advertisements",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-04-15T17:01:48.685Z",
+    "modified": "2023-04-15T17:04:09.183Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Name\": \"Kazu Ad\",\n  \"Description\": \"Kazu Ad\",\n  \"Content\": \"Buy Kazu Products\",\n  \"CompanyID\": 19\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "db52eb47-9e95-4c4a-8059-30aa5f6fd552",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_ad_1",
+    "url": "{{IP}}:{{PORT}}/s/advertisements/51",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2023-04-15T17:25:54.425Z",
+    "modified": "2023-04-15T17:54:02.104Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Name",
+        "action": "equal",
+        "value": "UPDATED"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Content",
+        "action": "equal",
+        "value": "UPDATED"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Description",
+        "action": "equal",
+        "value": "UPDATED"
+      }
+    ]
+  },
+  {
+    "_id": "8c6432e3-b8d6-4560-a57f-53fd33f637dd",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_ad_2",
+    "url": "{{IP}}:{{PORT}}/s/advertisements/1",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2023-04-15T17:27:35.024Z",
+    "modified": "2023-04-15T17:42:00.609Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Name",
+        "action": "equal",
+        "value": "UPDATED"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Description",
+        "action": "equal",
+        "value": "UPDATED"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Content",
+        "action": "equal",
+        "value": "UPDATED"
+      }
+    ]
+  },
+  {
+    "_id": "85318630-2d80-4cd8-9b0a-aaed64f9fb3c",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "update_ad_1",
+    "url": "{{IP}}:{{PORT}}/s/advertisements/51",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2023-04-15T17:36:11.448Z",
+    "modified": "2023-04-15T17:39:49.532Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Name\": \"UPDATED\",\n  \"Description\": \"UPDATED\",\n  \"Content\": \"UPDATED\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "f97cfc6b-3969-43b0-8941-8b3d07cd5e71",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "update_ad_2",
+    "url": "{{IP}}:{{PORT}}/s/advertisements/1",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2023-04-15T17:40:16.147Z",
+    "modified": "2023-04-15T17:41:56.596Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Name\": \"UPDATED\",\n  \"Description\": \"UPDATED\",\n  \"Content\": \"UPDATED\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "d149bfe4-7c65-4d46-8ea2-be9a8b7dda9f",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "delete_ad_1",
+    "url": "{{IP}}:{{PORT}}/s/advertisements/51",
+    "method": "DELETE",
+    "sortNum": 90000,
+    "created": "2023-04-15T17:44:35.153Z",
+    "modified": "2023-04-15T17:47:30.086Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "ea1beefa-be9e-4da3-b852-d5a39d70315b",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "delete_ad_2",
+    "url": "{{IP}}:{{PORT}}/s/advertisements/1",
+    "method": "DELETE",
+    "sortNum": 100000,
+    "created": "2023-04-15T17:45:22.921Z",
+    "modified": "2023-04-15T17:48:14.636Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "d5edd85a-e9b1-46fe-8af1-0ef45321db17",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "check_delete_ad_1",
+    "url": "{{IP}}:{{PORT}}/s/advertisements/51",
+    "method": "GET",
+    "sortNum": 110000,
+    "created": "2023-04-15T17:46:23.956Z",
+    "modified": "2023-04-15T17:47:41.629Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0]",
+        "action": "equal",
+        "value": "undefined"
+      }
+    ]
+  },
+  {
+    "_id": "71d4a6a9-a9d1-4d59-9cc4-b337093db761",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "check_delete_ad_2",
+    "url": "{{IP}}:{{PORT}}/s/advertisements/1",
+    "method": "GET",
+    "sortNum": 120000,
+    "created": "2023-04-15T17:47:55.055Z",
+    "modified": "2023-04-15T17:48:10.237Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0]",
+        "action": "equal",
+        "value": "undefined"
+      }
+    ]
+  },
+  {
+    "_id": "807a11c3-20fe-488d-aa09-6490c9dbb01c",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "create_sponsorship_1",
+    "url": "{{IP}}:{{PORT}}/s/sponsorships/1",
+    "method": "POST",
+    "sortNum": 130000,
+    "created": "2023-04-15T17:59:05.854Z",
+    "modified": "2023-04-15T18:01:11.178Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Compensation\": \"$500\",\n  \"UserID\": 1 \n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "5e98f154-5f68-4e89-acbd-7328de2a74ad",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "create_sponsorship_2",
+    "url": "{{IP}}:{{PORT}}/s/sponsorships/2",
+    "method": "POST",
+    "sortNum": 140000,
+    "created": "2023-04-15T17:59:25.862Z",
+    "modified": "2023-04-15T18:35:52.790Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Compensation\": \"$200\",\n  \"UserID\": 2 \n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "1df371e9-a91c-4b4a-ab23-47c388f344f6",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_sponsorships_1",
+    "url": "{{IP}}:{{PORT}}/s/sponsorships/1",
+    "method": "GET",
+    "sortNum": 150000,
+    "created": "2023-04-15T18:02:51.717Z",
+    "modified": "2023-04-15T18:04:43.331Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].CompanyID",
+        "action": "equal",
+        "value": "1"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Compensation",
+        "action": "equal",
+        "value": "$500"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].UserID",
+        "action": "equal",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "_id": "b4b35c7d-30ac-4641-9087-575a7bceaca9",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_sponsorships_2",
+    "url": "{{IP}}:{{PORT}}/s/sponsorships/2",
+    "method": "GET",
+    "sortNum": 160000,
+    "created": "2023-04-15T18:04:48.515Z",
+    "modified": "2023-04-15T18:05:14.815Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].CompanyID",
+        "action": "equal",
+        "value": "2"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Compensation",
+        "action": "equal",
+        "value": "$200"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].UserID",
+        "action": "equal",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "_id": "1f53dc96-6550-4ff7-9cca-d83147af8ffe",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_active_users_1",
+    "url": "{{IP}}:{{PORT}}/s/user/active/day",
+    "method": "GET",
+    "sortNum": 160000,
+    "created": "2023-04-15T18:18:32.704Z",
+    "modified": "2023-04-15T18:28:05.827Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"day\": \"2022-06-19\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].count",
+        "action": "equal",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "_id": "b4b99a1d-afc2-481f-b09c-5666353d57f3",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_active_users_2",
+    "url": "{{IP}}:{{PORT}}/s/user/active/day",
+    "method": "GET",
+    "sortNum": 170000,
+    "created": "2023-04-15T18:28:17.319Z",
+    "modified": "2023-04-15T18:28:51.366Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"day\": \"2022-04-13\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].count",
+        "action": "equal",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "_id": "a179a765-7802-472a-b61d-abd5809e23e9",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_ppd_1",
+    "url": "{{IP}}:{{PORT}}/s/posts/postsPerDay",
+    "method": "GET",
+    "sortNum": 170000,
+    "created": "2023-04-15T18:45:54.905Z",
+    "modified": "2023-04-15T19:06:32.198Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"day\": \"2023-02-26\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].count",
+        "action": "equal",
+        "value": "8"
+      }
+    ]
+  },
+  {
+    "_id": "dfc16745-5665-4c14-8964-18ed02ebaa72",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_ppd_2",
+    "url": "{{IP}}:{{PORT}}/s/posts/postsPerDay",
+    "method": "GET",
+    "sortNum": 180000,
+    "created": "2023-04-15T19:05:11.108Z",
+    "modified": "2023-04-15T19:06:27.997Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"day\": \"2022-09-08\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].count",
+        "action": "equal",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "_id": "8f2b516d-4ab1-469c-94cd-08f11edab51c",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_tvpd_1",
+    "url": "{{IP}}:{{PORT}}/s/posts/totalViews/day",
+    "method": "GET",
+    "sortNum": 190000,
+    "created": "2023-04-15T19:10:25.843Z",
+    "modified": "2023-04-15T19:17:53.458Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"day\": \"2022-09-08\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].totalViews",
+        "action": "equal",
+        "value": "4897"
+      }
+    ]
+  },
+  {
+    "_id": "ba1ffcb1-315a-48b9-ba59-0ab684f9c4bb",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_tvpd_2",
+    "url": "{{IP}}:{{PORT}}/s/posts/totalViews/day",
+    "method": "GET",
+    "sortNum": 200000,
+    "created": "2023-04-15T19:11:59.990Z",
+    "modified": "2023-04-15T19:14:32.692Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"day\": \"2023-02-26\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].totalViews",
+        "action": "equal",
+        "value": "48848"
       }
     ]
   }
