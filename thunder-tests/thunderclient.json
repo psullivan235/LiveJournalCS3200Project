@@ -40,5 +40,98 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "1ac8b5cb-8535-4144-8554-5f9472bb8cb8",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_ads_1",
+    "url": "{{IP}}:{{PORT}}/s/advertisements",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-04-15T00:49:41.666Z",
+    "modified": "2023-04-15T01:06:24.845Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].AdID",
+        "action": "equal",
+        "value": "1"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].CompanyID",
+        "action": "equal",
+        "value": "31"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Content",
+        "action": "equal",
+        "value": "Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl."
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Description",
+        "action": "equal",
+        "value": "Nulla tellus."
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Name",
+        "action": "equal",
+        "value": "ridiculus mus etiam"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Views",
+        "action": "equal",
+        "value": "29205"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].AdID",
+        "action": "equal",
+        "value": "2"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].CompanyID",
+        "action": "equal",
+        "value": "11"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].Content",
+        "action": "equal",
+        "value": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl."
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].Description",
+        "action": "equal",
+        "value": "Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus."
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].Name",
+        "action": "equal",
+        "value": "quis orci"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].Views",
+        "action": "equal",
+        "value": "97524"
+      }
+    ]
   }
 ]
