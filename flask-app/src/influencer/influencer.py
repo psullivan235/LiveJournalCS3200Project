@@ -69,7 +69,7 @@ def get_influencers_posts(UserID, PostedOn):
 
 
 @influencer.route('/posts/<UserID>/<PostedOn>/<Reaction>', methods=['GET'])
-def get_influencers_posts(UserID, PostedOn):
+def get_influencers_posts_reactions(UserID, PostedOn):
     query = f'''
             SELECT Reaction
             FROM (Posts Natural Join PostReactions)
@@ -117,7 +117,7 @@ def delete_follows(InfluencerUserID, FollowerUserID):
     return "Success"
 
 
-@influencer.route('/posts/<UserID>/<>', methods=['POST'])
+@influencer.route('/posts/<UserID>/<PostedOn>', methods=['POST'])
 def create_posts(UserID, PostedOn):
     formData = request.json
     PostID = formData['PostID']
