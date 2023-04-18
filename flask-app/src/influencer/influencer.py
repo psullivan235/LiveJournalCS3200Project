@@ -5,7 +5,7 @@ from src import db
 influencer = Blueprint('influencer', __name__)
 
 @influencer.route('/follows/<UserID>', methods=['GET'])
-def get_influencers(UserID):
+def get_follows_influencers(UserID):
     query = f'''
             SELECT *
             FROM Follows
