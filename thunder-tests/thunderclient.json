@@ -707,7 +707,7 @@
     "method": "GET",
     "sortNum": 18750,
     "created": "2023-04-19T00:36:36.760Z",
-    "modified": "2023-04-19T01:53:37.971Z",
+    "modified": "2023-04-19T13:21:23.207Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -715,13 +715,13 @@
         "type": "json-query",
         "custom": "json[0].Friend",
         "action": "equal",
-        "value": "Joe"
+        "value": "0"
       },
       {
         "type": "json-query",
         "custom": "json[0].InfluencerUserID",
         "action": "equal",
-        "value": "1"
+        "value": "36"
       },
       {
         "type": "json-query",
@@ -742,11 +742,11 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "get_influencers_groups_1",
-    "url": "{{IP}}:{{PORT}}/i/groupmemberships/1",
+    "url": "{{IP}}:{{PORT}}/i/GroupMemberships/1",
     "method": "GET",
     "sortNum": 50000,
     "created": "2023-04-19T00:37:35.502Z",
-    "modified": "2023-04-19T01:49:52.355Z",
+    "modified": "2023-04-19T13:23:02.051Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -754,19 +754,19 @@
         "type": "json-query",
         "custom": "json[0].GroupID",
         "action": "equal",
-        "value": "1"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].UserID",
-        "action": "equal",
-        "value": "1"
+        "value": "5"
       },
       {
         "type": "res-body",
         "custom": "",
         "action": "isjson",
         "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].GroupID",
+        "action": "equal",
+        "value": "21"
       }
     ]
   },
@@ -775,13 +775,18 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "get_influencers_posts_1",
-    "url": "{{IP}}:{{PORT}}/i/posts/1",
+    "url": "{{IP}}:{{PORT}}/i/posts/1/day",
     "method": "GET",
     "sortNum": 70000,
     "created": "2023-04-19T00:38:16.055Z",
-    "modified": "2023-04-19T01:50:56.945Z",
+    "modified": "2023-04-19T13:29:21.792Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"day\": \"2023-02-26\"\n}",
+      "form": []
+    },
     "tests": [
       {
         "type": "json-query",
@@ -793,25 +798,25 @@
         "type": "json-query",
         "custom": "json[0].Likes",
         "action": "equal",
-        "value": "1"
+        "value": "5368"
       },
       {
         "type": "json-query",
         "custom": "json[0].Views",
         "action": "equal",
-        "value": "1"
+        "value": "5759"
       },
       {
         "type": "json-query",
         "custom": "json[0].Content",
         "action": "equal",
-        "value": "one"
+        "value": "Suspendisse accumsan tortor quis turpis. Sed ante."
       },
       {
         "type": "json-query",
         "custom": "json[0].PostedOn",
         "action": "equal",
-        "value": "0001-01-01"
+        "value": "Sun, 26 Feb 2023 18:50:07 GMT"
       },
       {
         "type": "json-query",
@@ -832,16 +837,16 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "create_follows_1",
-    "url": "{{IP}}:{{PORT}}/i/follows/1",
+    "url": "{{IP}}:{{PORT}}/i/follows/1/12",
     "method": "POST",
     "sortNum": 100000,
     "created": "2023-04-19T00:39:07.378Z",
-    "modified": "2023-04-19T01:04:15.383Z",
+    "modified": "2023-04-19T13:41:41.397Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"Friend\": \"Joe\",\n  \"InfluencerUserID\": \"1\",\n  \"FollowerUserID\": \"1\"\n}",
+      "raw": "{\n  \"Friend\": true\n}",
       "form": []
     },
     "tests": [
@@ -857,25 +862,38 @@
     "_id": "b2156ca1-e1ee-4ab0-94e0-29965ef7be90",
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
-    "name": "create_follows_2",
-    "url": "{{IP}}:{{PORT}}/i/follows/2",
-    "method": "POST",
+    "name": "check_create_follows_1",
+    "url": "{{IP}}:{{PORT}}/i/follows/12",
+    "method": "GET",
     "sortNum": 110000,
     "created": "2023-04-19T00:39:09.341Z",
-    "modified": "2023-04-19T01:26:33.213Z",
+    "modified": "2023-04-19T13:45:48.281Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n  \"Friend\": \"Bob\",\n  \"InfluencerUserID\": \"2\",\n  \"FollowerUserID\": \"2\"\n}",
-      "form": []
-    },
     "tests": [
       {
         "type": "res-body",
         "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].FollowerUserID",
         "action": "equal",
-        "value": "Success"
+        "value": "12"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Friend",
+        "action": "equal",
+        "value": "1"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].InfluencerUserID",
+        "action": "equal",
+        "value": "1"
       }
     ]
   },
@@ -884,11 +902,11 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "delete_follows_1",
-    "url": "{{IP}}:{{PORT}}/i/follows/1",
+    "url": "{{IP}}:{{PORT}}/i/follows/1/12",
     "method": "DELETE",
     "sortNum": 120000,
     "created": "2023-04-19T00:40:06.380Z",
-    "modified": "2023-04-19T01:31:13.948Z",
+    "modified": "2023-04-19T13:46:38.523Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -905,11 +923,11 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "delete_follows_2",
-    "url": "{{IP}}:{{PORT}}/i/follows/2",
+    "url": "{{IP}}:{{PORT}}/i/follows/13/12",
     "method": "DELETE",
     "sortNum": 130000,
     "created": "2023-04-19T00:40:13.914Z",
-    "modified": "2023-04-19T01:31:17.387Z",
+    "modified": "2023-04-19T13:47:31.077Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -926,16 +944,16 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "create_posts_1",
-    "url": "{{IP}}:{{PORT}}/i/posts/1",
+    "url": "{{IP}}:{{PORT}}/i/posts/1/day",
     "method": "POST",
     "sortNum": 140000,
     "created": "2023-04-19T00:40:37.669Z",
-    "modified": "2023-04-19T01:29:44.626Z",
+    "modified": "2023-04-19T13:52:49.705Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"PostID\": \"1\",\n  \"Likes\": \"1\",\n  \"Views\": \"1\",\n  \"Content\": \"one\",\n  \"PostedOn\": \"0001-01-01\",\n  \"UserID\": \"1\"\n}",
+      "raw": "{\n  \"Content\": \"Wow what a good day!\",\n  \"day\": \"2023-04-19\",\n  \"UserID\": 1\n}",
       "form": []
     },
     "tests": [
@@ -951,25 +969,55 @@
     "_id": "8504c782-fd7b-44a3-882c-201e43b9bd75",
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
-    "name": "create_posts_2",
-    "url": "{{IP}}:{{PORT}}/i/posts/2",
-    "method": "POST",
+    "name": "check_create_posts_1",
+    "url": "{{IP}}:{{PORT}}/i/posts/1/day",
+    "method": "GET",
     "sortNum": 150000,
     "created": "2023-04-19T00:40:48.643Z",
-    "modified": "2023-04-19T01:29:48.052Z",
+    "modified": "2023-04-19T13:55:37.776Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"PostID\": \"2\",\n  \"Likes\": \"2\",\n  \"Views\": \"2\",\n  \"Content\": \"two\",\n  \"PostedOn\": \"0002-02-02\",\n  \"UserID\": \"2\"\n}",
+      "raw": "{\n  \"day\": \"2023-04-19\"\n}",
       "form": []
     },
     "tests": [
       {
         "type": "res-body",
         "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Content",
         "action": "equal",
-        "value": "Success"
+        "value": "Wow what a good day!"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].UserID",
+        "action": "equal",
+        "value": "1"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].PostedOn",
+        "action": "equal",
+        "value": "Wed, 19 Apr 2023 00:00:00 GMT"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Views",
+        "action": "equal",
+        "value": "0"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Likes",
+        "action": "equal",
+        "value": "0"
       }
     ]
   },
@@ -978,16 +1026,16 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "put_posts_1",
-    "url": "{{IP}}:{{PORT}}/i/posts/1",
+    "url": "{{IP}}:{{PORT}}/i/posts/1/day",
     "method": "PUT",
     "sortNum": 150000,
     "created": "2023-04-19T00:41:04.512Z",
-    "modified": "2023-04-19T01:30:25.573Z",
+    "modified": "2023-04-19T13:59:05.425Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"PostID\": \"5\",\n  \"Likes\": \"5\",\n  \"Views\": \"5\",\n  \"Content\": \"UPDATED\",\n  \"PostedOn\": \"0005-05-05\",\n  \"UserID\": \"5\"\n}",
+      "raw": "{\n  \"day\": \"2023-04-19\",\n  \"Likes\": 12,\n  \"Views\": 23,\n  \"Content\": \"JK my day was bad\"\n}",
       "form": []
     },
     "tests": [
@@ -1003,25 +1051,49 @@
     "_id": "5a6c4fc3-f8fb-43a2-8bc8-9217a4c4498e",
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
-    "name": "put_posts_2",
-    "url": "{{IP}}:{{PORT}}/i/posts/2",
-    "method": "PUT",
+    "name": "check_put_posts_1",
+    "url": "{{IP}}:{{PORT}}/i/posts/1/day",
+    "method": "GET",
     "sortNum": 160000,
     "created": "2023-04-19T00:41:18.639Z",
-    "modified": "2023-04-19T01:54:04.579Z",
+    "modified": "2023-04-19T14:01:39.969Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"PostID\": \"6\",\n  \"Likes\": \"6\",\n  \"Views\": \"6\",\n  \"Content\": \"UPDATED\",\n  \"PostedOn\": \"0006-06-06\",\n  \"UserID\": \"6\"\n}",
+      "raw": "{\n  \"day\": \"2023-04-19\"\n}",
       "form": []
     },
     "tests": [
       {
         "type": "res-body",
         "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Content",
         "action": "equal",
-        "value": "Success"
+        "value": "JK my day was bad"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].UserID",
+        "action": "equal",
+        "value": "1"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Likes",
+        "action": "equal",
+        "value": "12"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Views",
+        "action": "equal",
+        "value": "23"
       }
     ]
   },
@@ -1034,7 +1106,7 @@
     "method": "GET",
     "sortNum": 34375,
     "created": "2023-04-19T01:48:12.738Z",
-    "modified": "2023-04-19T01:48:43.986Z",
+    "modified": "2023-04-19T13:21:46.928Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -1042,13 +1114,13 @@
         "type": "json-query",
         "custom": "json[0].Friend",
         "action": "equal",
-        "value": "Bob"
+        "value": "0"
       },
       {
         "type": "json-query",
         "custom": "json[0].InfluencerUserID",
         "action": "equal",
-        "value": "2"
+        "value": "1"
       },
       {
         "type": "json-query",
@@ -1069,25 +1141,19 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "get_influencers_groups_2",
-    "url": "{{IP}}:{{PORT}}/i/groupmemberships/2",
+    "url": "{{IP}}:{{PORT}}/i/GroupMemberships/2",
     "method": "GET",
     "sortNum": 55000,
     "created": "2023-04-19T01:49:56.994Z",
-    "modified": "2023-04-19T01:50:11.389Z",
+    "modified": "2023-04-19T13:24:47.690Z",
     "headers": [],
     "params": [],
     "tests": [
       {
         "type": "json-query",
-        "custom": "json[0].GroupID",
+        "custom": "json[0]",
         "action": "equal",
-        "value": "2"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].UserID",
-        "action": "equal",
-        "value": "2"
+        "value": "undefined"
       },
       {
         "type": "res-body",
@@ -1102,55 +1168,30 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "get_influencers_posts_2",
-    "url": "{{IP}}:{{PORT}}/i/posts/2",
+    "url": "{{IP}}:{{PORT}}/i/posts/2/day",
     "method": "GET",
     "sortNum": 75000,
     "created": "2023-04-19T01:50:20.367Z",
-    "modified": "2023-04-19T01:50:48.641Z",
+    "modified": "2023-04-19T13:30:35.238Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"day\": \"1985-01-01\"\n}",
+      "form": []
+    },
     "tests": [
-      {
-        "type": "json-query",
-        "custom": "json[0].PostID",
-        "action": "equal",
-        "value": "2"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Likes",
-        "action": "equal",
-        "value": "2"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Views",
-        "action": "equal",
-        "value": "2"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Content",
-        "action": "equal",
-        "value": "two"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].PostedOn",
-        "action": "equal",
-        "value": "0002-02-02"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].UserID",
-        "action": "equal",
-        "value": "2"
-      },
       {
         "type": "res-body",
         "custom": "",
         "action": "isjson",
         "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0]",
+        "action": "equal",
+        "value": "undefined"
       }
     ]
   },
@@ -1159,60 +1200,36 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "get_influencers_posts_reactions_1",
-    "url": "{{IP}}:{{PORT}}/i/posts/reactions/2",
+    "url": "{{IP}}:{{PORT}}/i/posts/1/day/reaction",
     "method": "GET",
     "sortNum": 87500,
     "created": "2023-04-19T01:51:25.853Z",
-    "modified": "2023-04-19T01:53:14.145Z",
+    "modified": "2023-04-19T13:37:22.002Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"reaction\": \"reaction two\"\n}",
+      "raw": "{\n  \"day\": \"2023-02-26\"\n}",
       "form": []
     },
     "tests": [
-      {
-        "type": "json-query",
-        "custom": "json[0].PostID",
-        "action": "equal",
-        "value": "2"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Likes",
-        "action": "equal",
-        "value": "2"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Views",
-        "action": "equal",
-        "value": "2"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Content",
-        "action": "equal",
-        "value": "two"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].PostedOn",
-        "action": "equal",
-        "value": "0002-02-02"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].UserID",
-        "action": "equal",
-        "value": "2"
-      },
       {
         "type": "res-body",
         "custom": "",
         "action": "isjson",
         "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].Reaction",
+        "action": "equal",
+        "value": ":)"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].Reaction",
+        "action": "equal",
+        "value": ";)"
       }
     ]
   },
@@ -1221,60 +1238,30 @@
     "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
     "containerId": "",
     "name": "get_influencers_posts_reactions_2",
-    "url": "{{IP}}:{{PORT}}/i/posts/reactions/1",
+    "url": "{{IP}}:{{PORT}}/i/posts/2/day/reaction",
     "method": "GET",
     "sortNum": 93750,
     "created": "2023-04-19T01:52:41.060Z",
-    "modified": "2023-04-19T01:53:22.283Z",
+    "modified": "2023-04-19T13:38:23.722Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"reaction\": \"reaction two\"\n}",
+      "raw": "{\n  \"day\": \"2024-07-04\"\n}",
       "form": []
     },
     "tests": [
-      {
-        "type": "json-query",
-        "custom": "json[0].PostID",
-        "action": "equal",
-        "value": "1"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Likes",
-        "action": "equal",
-        "value": "1"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Views",
-        "action": "equal",
-        "value": "1"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Content",
-        "action": "equal",
-        "value": "one"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].PostedOn",
-        "action": "equal",
-        "value": "0001-01-01"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].UserID",
-        "action": "equal",
-        "value": "1"
-      },
       {
         "type": "res-body",
         "custom": "",
         "action": "isjson",
         "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0]",
+        "action": "equal",
+        "value": "undefined"
       }
     ]
   },
@@ -1308,6 +1295,33 @@
         "custom": "json[1].value",
         "action": "equal",
         "value": "2"
+      }
+    ]
+  },
+  {
+    "_id": "3fbffcdb-9c4f-4e5d-8abe-fec7dbc60703",
+    "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
+    "containerId": "",
+    "name": "check_delete_follows_1",
+    "url": "{{IP}}:{{PORT}}/i/follows/12",
+    "method": "GET",
+    "sortNum": 135000,
+    "created": "2023-04-19T13:47:15.348Z",
+    "modified": "2023-04-19T13:48:01.827Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0]",
+        "action": "equal",
+        "value": "undefined"
       }
     ]
   }

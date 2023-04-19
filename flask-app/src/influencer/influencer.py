@@ -85,9 +85,9 @@ def get_influencers_posts_reactions(userID):
     endDateTime = f"{day} {endTime}"
 
     query = f'''
-            SELECT reaction
-            FROM (Posts Natural Join PostReactions)
-            WHERE userID = {userID}
+            SELECT Reaction
+            FROM Posts JOIN PostReactions USING (PostID)
+            WHERE Posts.UserID = {userID}
                 AND (PostedOn >= '{beginDateTime}') AND (PostedOn <= '{endDateTime}')
             '''
 
@@ -132,16 +132,15 @@ def delete_follows(InfluencerUserID, FollowerUserID):
     return "Success"
 
 
-@influencer.route('/posts/<UserID>/<PostedOn>', methods=['POST'])
-def create_posts(UserID, PostedOn):
+@influencer.route('/posts/<UserID>/day', methods=['POST'])
+def create_posts(UserID):
     formData = request.json
-    PostID = formData['PostID']
-    Likes = formData['Likes']
-    Views = formData['Views']
+    day = formData['day']
+    PostedOn = f"{day} 00:00:00"
     Content = formData['Content']
 
 
-    query = f"INSERT into Posts (PostID, Likes, Views, Content, PostedOn, UserID) VALUES ({PostID}, {Likes}, {Views}, {Content}, {PostedOn}, {UserID})"
+    query = f"INSERT into Posts (Content, PostedOn, UserID) VALUES ('{Content}', '{PostedOn}', {UserID})"
 
     cursor = db.get_db().cursor()
     cursor.execute(query)
@@ -150,18 +149,22 @@ def create_posts(UserID, PostedOn):
     return "Success"
 
 
-@influencer.route('PUT /posts/<UserID>/<PostedOn>', methods=['PUT'])
-def put_posts(UserID, PostedOn):
+@influencer.route('/posts/<UserID>/day', methods=['PUT'])
+def put_posts(UserID):
     formData = request.json
-    PostID = formData['PostID']
+    day = formData['day'] # Day in "YYYY-MM-DD"
+    beginTime = "00:00:00"
+    endTime = "23:59:59"
+    beginDateTime = f"{day} {beginTime}"
+    endDateTime = f"{day} {endTime}"
     Likes = formData['Likes']
     Views = formData['Views']
     Content = formData['Content']
 
     query = f'''
         UPDATE Posts
-        SET PostID = '{PostID}', Likes = '{Likes}', Views = '{Views}', Content = '{Content}'
-        WHERE UserID = {UserID} and PostedOn = {PostedOn}
+        SET Likes = '{Likes}', Views = '{Views}', Content = '{Content}'
+        WHERE UserID = {UserID} AND (PostedOn >= '{beginDateTime}') AND (PostedOn <= '{endDateTime}')
         '''
 
     cursor = db.get_db().cursor()
