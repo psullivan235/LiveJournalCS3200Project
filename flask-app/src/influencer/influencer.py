@@ -47,12 +47,19 @@ def get_influencers_groups(userID):
     return jsonify(json_data)
 
 
-@influencer.route('/posts/<UserID>/<PostedOn>', methods=['GET'])
-def get_influencers_posts(UserID, PostedOn):
+@influencer.route('/posts/<userID>/day', methods=['GET'])
+def get_influencers_posts(userID):
+    formData = request.json
+    day = formData['day'] # Day in "YYYY-MM-DD"
+    beginTime = "00:00:00"
+    endTime = "23:59:59"
+    beginDateTime = f"{day} {beginTime}"
+    endDateTime = f"{day} {endTime}"
     query = f'''
             SELECT *
             FROM Posts
-            WHERE UserID = {UserID} AND PostedOn = {PostedOn}
+            WHERE userID = {userID} AND (PostedOn >= '{beginDateTime}')
+                AND (PostedOn <= '{endDateTime}')
             '''
 
     cursor = db.get_db().cursor()
@@ -68,12 +75,20 @@ def get_influencers_posts(UserID, PostedOn):
     return jsonify(json_data)
 
 
-@influencer.route('/posts/<UserID>/<PostedOn>/<Reaction>', methods=['GET'])
-def get_influencers_posts_reactions(UserID, PostedOn):
+@influencer.route('/posts/<userID>/day/reaction', methods=['GET'])
+def get_influencers_posts_reactions(userID):
+    formData = request.json
+    day = formData['day'] # Day in "YYYY-MM-DD"
+    beginTime = "00:00:00"
+    endTime = "23:59:59"
+    beginDateTime = f"{day} {beginTime}"
+    endDateTime = f"{day} {endTime}"
+
     query = f'''
-            SELECT Reaction
+            SELECT reaction
             FROM (Posts Natural Join PostReactions)
-            WHERE UserID = {UserID} AND PostedOn = {PostedOn}
+            WHERE userID = {userID}
+                AND (PostedOn >= '{beginDateTime}') AND (PostedOn <= '{endDateTime}')
             '''
 
     cursor = db.get_db().cursor()
