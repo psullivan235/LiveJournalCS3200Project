@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -199,6 +199,9 @@ def get_total_views_per_day():
     data = cursor.fetchall()
 
     for row in data:
+        # Sum of nothing will not return 0, manually overwriting
+        if (row == (None,)):
+            row = (0,)
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
