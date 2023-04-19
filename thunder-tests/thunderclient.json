@@ -437,7 +437,7 @@
     "method": "GET",
     "sortNum": 150000,
     "created": "2023-04-15T18:02:51.717Z",
-    "modified": "2023-04-15T18:04:43.331Z",
+    "modified": "2023-04-19T02:47:37.959Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -449,9 +449,9 @@
       },
       {
         "type": "json-query",
-        "custom": "json[0].CompanyID",
+        "custom": "json[0].Company Name",
         "action": "equal",
-        "value": "1"
+        "value": "Twitternation"
       },
       {
         "type": "json-query",
@@ -461,9 +461,9 @@
       },
       {
         "type": "json-query",
-        "custom": "json[0].UserID",
+        "custom": "json[0].Username",
         "action": "equal",
-        "value": "1"
+        "value": "bgot0"
       }
     ]
   },
@@ -476,7 +476,7 @@
     "method": "GET",
     "sortNum": 160000,
     "created": "2023-04-15T18:04:48.515Z",
-    "modified": "2023-04-15T18:05:14.815Z",
+    "modified": "2023-04-19T02:45:24.135Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -488,9 +488,9 @@
       },
       {
         "type": "json-query",
-        "custom": "json[0].CompanyID",
+        "custom": "json[0].Company Name",
         "action": "equal",
-        "value": "2"
+        "value": "Oozz"
       },
       {
         "type": "json-query",
@@ -500,9 +500,9 @@
       },
       {
         "type": "json-query",
-        "custom": "json[0].UserID",
+        "custom": "json[0].Username",
         "action": "equal",
-        "value": "2"
+        "value": "nlambden1"
       }
     ]
   },
@@ -1275,6 +1275,39 @@
         "custom": "",
         "action": "isjson",
         "value": "true"
+      }
+    ]
+  },
+  {
+    "_id": "2978e833-8920-42f8-b02f-1dc8d0a23742",
+    "colId": "34aa3c1f-9a6f-4d86-85e0-f9e6683b0484",
+    "containerId": "",
+    "name": "get_companies_1",
+    "url": "{{IP}}:{{PORT}}/s/companies",
+    "method": "GET",
+    "sortNum": 210000,
+    "created": "2023-04-19T02:12:19.952Z",
+    "modified": "2023-04-19T02:49:33.724Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].label",
+        "action": "equal",
+        "value": "Oozz"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].value",
+        "action": "equal",
+        "value": "2"
       }
     ]
   }

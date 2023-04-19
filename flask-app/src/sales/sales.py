@@ -4,6 +4,25 @@ from src import db
 
 sales = Blueprint('sales', __name__)
 
+@sales.route('/companies', methods=['GET'])
+def get_companies():
+    query = '''
+            SELECT Name as label, CompanyID as value
+            FROM Company
+            '''
+    
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+
+    json_data = []
+    column_headers = [x[0] for x in cursor.description]
+    data = cursor.fetchall()
+
+    for row in data:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
 @sales.route('/advertisements', methods=['GET'])
 def get_ads():
     query = '''
@@ -94,8 +113,8 @@ def delete_ad(AdID):
 @sales.route('/sponsorships/<CompanyID>', methods=['GET'])
 def get_sponsorships(CompanyID):
     query = f'''
-            SELECT *
-            FROM Sponsorship
+            SELECT Name as 'Company Name', Username, Compensation
+            FROM Sponsorship JOIN Company USING (CompanyID) JOIN Users USING (UserID)
             WHERE CompanyID = {CompanyID}
             '''
     
