@@ -50,7 +50,7 @@
     "method": "GET",
     "sortNum": 40000,
     "created": "2023-04-15T00:49:41.666Z",
-    "modified": "2023-04-15T17:25:19.480Z",
+    "modified": "2023-04-19T01:34:06.514Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -62,85 +62,37 @@
       },
       {
         "type": "json-query",
-        "custom": "json[0].AdID",
+        "custom": "json[0].value",
         "action": "equal",
         "value": "1"
       },
       {
         "type": "json-query",
-        "custom": "json[0].CompanyID",
-        "action": "equal",
-        "value": "31"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Content",
-        "action": "equal",
-        "value": "Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl."
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Description",
-        "action": "equal",
-        "value": "Nulla tellus."
-      },
-      {
-        "type": "json-query",
-        "custom": "json[0].Name",
+        "custom": "json[0].label",
         "action": "equal",
         "value": "ridiculus mus etiam"
       },
       {
         "type": "json-query",
-        "custom": "json[0].Views",
-        "action": "equal",
-        "value": "29205"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[1].AdID",
+        "custom": "json[1].value",
         "action": "equal",
         "value": "2"
       },
       {
         "type": "json-query",
-        "custom": "json[1].CompanyID",
-        "action": "equal",
-        "value": "11"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[1].Content",
-        "action": "equal",
-        "value": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl."
-      },
-      {
-        "type": "json-query",
-        "custom": "json[1].Description",
-        "action": "equal",
-        "value": "Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus."
-      },
-      {
-        "type": "json-query",
-        "custom": "json[1].Name",
+        "custom": "json[1].label",
         "action": "equal",
         "value": "quis orci"
       },
       {
         "type": "json-query",
-        "custom": "json[1].Views",
-        "action": "equal",
-        "value": "97524"
-      },
-      {
-        "type": "json-query",
-        "custom": "json[50].Name",
+        "custom": "json[50].label",
         "action": "equal",
         "value": "Oozz"
       },
       {
         "type": "json-query",
-        "custom": "json[51].Name",
+        "custom": "json[51].label",
         "action": "equal",
         "value": "Kazu Ad"
       }

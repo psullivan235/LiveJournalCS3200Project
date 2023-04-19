@@ -7,7 +7,7 @@ sales = Blueprint('sales', __name__)
 @sales.route('/advertisements', methods=['GET'])
 def get_ads():
     query = '''
-            SELECT *
+            SELECT Name as label, AdID as value
             FROM Advertisements
             '''
     
