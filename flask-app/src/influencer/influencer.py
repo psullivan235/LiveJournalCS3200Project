@@ -5,6 +5,25 @@ from src import db
 influencer = Blueprint('influencer', __name__)
 
 
+@influencer.route('/users', methods=['GET'])
+def get_companies():
+    query = '''
+            SELECT username as label, userID as value
+            FROM Users
+            '''
+    
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+
+    json_data = []
+    column_headers = [x[0] for x in cursor.description]
+    data = cursor.fetchall()
+
+    for row in data:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
 @influencer.route('/follows/<FollowerUserID>', methods=['GET'])
 def get_influencers_follows(FollowerUserID):
     query = f'''
@@ -83,6 +102,8 @@ def get_influencers_posts_reactions(userID):
     endTime = "23:59:59"
     beginDateTime = f"{day} {beginTime}"
     endDateTime = f"{day} {endTime}"
+
+
 
     query = f'''
             SELECT Reaction
