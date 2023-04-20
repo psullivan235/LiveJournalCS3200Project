@@ -1324,5 +1324,50 @@
         "value": "undefined"
       }
     ]
+  },
+  {
+    "_id": "c39bac72-18ba-49c6-8151-687bea67304a",
+    "colId": "9d8fe1f1-785e-4f98-a07e-0ee895f5b08a",
+    "containerId": "",
+    "name": "get_users",
+    "url": "{{IP}}:{{PORT}}/i/users",
+    "method": "GET",
+    "sortNum": 180000,
+    "created": "2023-04-20T23:08:17.844Z",
+    "modified": "2023-04-20T23:11:01.701Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": "true"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].value",
+        "action": "equal",
+        "value": "1"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].label",
+        "action": "equal",
+        "value": "bgot0"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].value",
+        "action": "equal",
+        "value": "2"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[1].label",
+        "action": "equal",
+        "value": "nlambden1"
+      }
+    ]
   }
 ]

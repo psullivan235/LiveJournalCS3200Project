@@ -6,7 +6,7 @@ influencer = Blueprint('influencer', __name__)
 
 
 @influencer.route('/users', methods=['GET'])
-def get_companies():
+def get_users():
     query = '''
             SELECT username as label, userID as value
             FROM Users
