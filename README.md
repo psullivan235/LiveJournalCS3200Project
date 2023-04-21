@@ -24,5 +24,5 @@ Livejournal is a social media platform designed to allow users to create one jou
 Note: Tests should be run on startup before the data is manipulated via the web app
 
 ## Accessing the Appsmith appplication
-1. With the containers running go [here](http://localhost:8080/app/appsmith3200projectfrontend/post-creation-643f382a67dcf9058096ce3e?branch=master)
+1. With the containers running go [here](http://localhost:8080/app/appsmith3200projectfrontend/user-landing-page-643f346a55c4d051342d79ea?branch=master)
 2. For more info on the frontend see [this repo](https://github.com/psullivan235/Appsmith3200ProjectFrontend)
