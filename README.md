@@ -1,6 +1,6 @@
 # Livejournal CS3200 Database Design Project
 ## Project Overview
-Livejournal is a social media platform designed to allow users to create on journal style post per day.
+Livejournal is a social media platform designed to allow users to create one journal style post per day.
 
 ## How to setup and start the containers
 **Important** - you need Docker Desktop installed
